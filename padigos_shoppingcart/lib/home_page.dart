@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+// import 'package:get/get_core/src/get_main.dart';
+import 'package:padigos_shoppingcart/data_class.dart';
+import 'package:padigos_shoppingcart/second_page.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -41,16 +46,19 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 40),
           child: Row(
             children: [
-              Text(
-                'Number here',
-                style:
-                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              const Spacer(),
+              Consumer<DataClass>(builder: (context, data, child) {
+                return Text(
+                  '${data.x}',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                );
+              }),
               const Text(
-                "Total",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
-              )
+                "-- Total",
+                style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+              ),
             ],
           ),
         ),
@@ -71,7 +79,23 @@ class HomePage extends StatelessWidget {
                         border: Border.all(
                             color: const Color(0xFF716f72), width: 1)),
                   ),
-                  onTap: () {}),
+                  onTap: () {
+                    if (context.read<DataClass>().x >= 5) {
+                      Get.snackbar("Item", "Can not more than this",
+                          backgroundColor: Colors.black,
+                          colorText: Colors.white,
+                          titleText: const Text(
+                            "Item",
+                            style: TextStyle(fontSize: 40, color: Colors.white),
+                          ),
+                          messageText: const Text(
+                            "Can not be more than this",
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ));
+                    } else {
+                      context.read<DataClass>().incrementX();
+                    }
+                  }),
               const Spacer(),
               Container(
                 height: 60,
@@ -84,7 +108,11 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     children: [
                       GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Get.to(() => const SecondPage(),
+                                transition: Transition.upToDown,
+                                duration: const Duration(seconds: 1));
+                          },
                           child: const Text(
                             "Next Page",
                             style: TextStyle(fontSize: 20, color: Colors.white),
