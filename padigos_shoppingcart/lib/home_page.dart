@@ -44,22 +44,25 @@ class HomePage extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40),
-          child: Row(
-            children: [
-              Consumer<DataClass>(builder: (context, data, child) {
-                return Text(
-                  '${data.x}',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                );
-              }),
-              const Text(
-                "-- Total",
-                style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-              ),
-            ],
+          child: Flexible(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Consumer<DataClass>(builder: (context, data, child) {
+                  return Text(
+                    '${data.x}',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  );
+                }),
+                const Text(
+                  "-- Total",
+                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
           ),
         ),
         const SizedBox(
