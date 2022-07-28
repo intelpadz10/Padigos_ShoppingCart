@@ -20,20 +20,21 @@ class SecondPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 40),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                        margin: EdgeInsets.only(right: 20),
+                        margin: EdgeInsets.only(left: 40, right: 90),
                         width: 20,
                         height: 20,
                         child: const Icon(
                           Icons.shopping_cart,
+                          color: Colors.orange,
                         )),
                     const Text(
-                      'Shopping Cart',
+                      'Shopee',
                       style: TextStyle(
-                        fontSize: 30,
-                      ),
+                          fontSize: 30,
+                          color: Colors.orange,
+                          fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -44,7 +45,7 @@ class SecondPage extends StatelessWidget {
                     indent: 20,
                     endIndent: 20,
                     thickness: 5,
-                    color: Color.fromARGB(255, 116, 113, 113)),
+                    color: Color.fromARGB(255, 174, 172, 172)),
               ),
               Flexible(
                 child: Row(
@@ -56,13 +57,16 @@ class SecondPage extends StatelessWidget {
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
+                          color: Colors.orange,
                         ),
                       );
                     }),
                     const Text(
                       "-- Total",
-                      style:
-                          TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          color: Colors.orange,
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -80,7 +84,7 @@ class SecondPage extends StatelessWidget {
                         if (Provider.of<DataClass>(context, listen: false).x <=
                             0) {
                           Get.snackbar("Item", "Can not decrease more",
-                              backgroundColor: Colors.black,
+                              backgroundColor: Colors.orange,
                               colorText: Colors.white,
                               titleText: const Text(
                                 "Item",
@@ -100,15 +104,20 @@ class SecondPage extends StatelessWidget {
                       child: Container(
                         height: 60,
                         width: 60,
-                        child: const Icon(Icons.remove),
+                        child: const Icon(
+                          Icons.remove,
+                          color: Colors.orange,
+                        ),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(
-                                width: 1, color: const Color(0xFF716f72))),
+                              width: 1,
+                              color: Colors.orange,
+                            )),
                       ),
                     ),
                     const SizedBox(
-                      width: 20,
+                      width: 100,
                     ),
                     Flexible(
                       child: Container(
@@ -116,7 +125,7 @@ class SecondPage extends StatelessWidget {
                         height: 60,
                         width: double.maxFinite,
                         decoration: BoxDecoration(
-                          color: Colors.black,
+                          color: Colors.orange,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: GestureDetector(
